@@ -3,9 +3,16 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 /**
  * Class Basket
+ *
+ * @property Order|null            $order
+ *
+ * @property Collection|Category[] $categories
+ * @property Collection|Product[]  $products
+ *
  *
  * @package App\Models
  */
@@ -24,10 +31,7 @@ class Basket extends Model
 
     public function getCategoriesAttribute()
     {
-        $category_ids = [];
-        $this->products()->each(function ($product) use (&$category_ids) {
-            $category_ids[] = $product->category_id;
-        });
+        $category_ids = $this->products()->pluck('category_id');
 
         return Category::whereIn('id', $category_ids)->get();
     }
