@@ -16,6 +16,7 @@ use Illuminate\Support\Collection;
  *
  * @property Category              $parent
  * @property Category[]|Collection $children
+ * @property Product[]|Collection  $products
  *
  * @package App\Models
  */
@@ -38,6 +39,14 @@ class Category extends Model
     public function children()
     {
         return $this->hasMany(Category::class, 'parent_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function products()
+    {
+        return $this->hasMany(Product::class);
     }
 
 }
