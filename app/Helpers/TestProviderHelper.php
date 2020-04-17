@@ -46,13 +46,13 @@ class TestProviderHelper implements ProviderHelperContract
     /**
      * @param Category $category
      *
-     * @return CategoryResource
+     * @return array
      */
     public function getCategoryInformation(Category $category)
     {
         //either way, depending on complexity of transformation
-//        return $category->toArray();
-        return new CategoryResource($category);
+        return $category->toArray();
+//        return new CategoryResource($category);
     }
 
 }

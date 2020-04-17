@@ -5,6 +5,7 @@ namespace App\Helpers;
 
 
 use App\Http\Resources\CategoryResource;
+use App\Http\Resources\ProductResource;
 use App\Models\Category;
 
 class AnotherTestProviderHelper implements ProviderHelperContract
@@ -23,10 +24,10 @@ class AnotherTestProviderHelper implements ProviderHelperContract
     /**
      * @param Category $category
      *
-     * @return \App\Models\Product[]|\Illuminate\Support\Collection
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function getCategoryInformation(Category $category)
     {
-        return $category->products;
+        return ProductResource::collection($category->products);
     }
 }
