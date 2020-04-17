@@ -30,4 +30,12 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function baskets()
+    {
+        return $this->belongsToMany(Basket::class);
+    }
 }

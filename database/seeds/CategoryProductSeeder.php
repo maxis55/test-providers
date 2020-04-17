@@ -41,5 +41,11 @@ class CategoryProductSeeder extends Seeder
                 );
             }
         );
+
+
+
+
+
+
     }
 }
